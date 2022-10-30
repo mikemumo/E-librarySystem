@@ -113,7 +113,7 @@
                             Visible="False">Publisher Management</asp:LinkButton>
                             &nbsp;
                             <asp:LinkButton class="footerlinks" ID="LinkButton5" runat="server"
-                            Visible="False">Book Inventory</asp:LinkButton>
+                            Visible="False" OnClick="LinkButton5_Click1">Book Inventory</asp:LinkButton>
                             &nbsp;
                             <asp:LinkButton class="footerlinks" ID="LinkButton8" runat="server" OnClick="LinkButton8_Click1"
                             Visible="False">Book Issuing</asp:LinkButton>
