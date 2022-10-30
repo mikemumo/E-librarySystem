@@ -1,5 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site2.Master" AutoEventWireup="true" CodeBehind="userprofile.aspx.cs" Inherits="E_librarySystem.userprofile" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".table").prepend($("<thead></thead>").append($(this).find("tr:first"))).dataTable();
+            //$('.table1').DataTable();
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder1" runat="server">
      <div class="container-fluid">
@@ -82,14 +88,14 @@
                              <div class="col-md-4">
                                 <label>Old Password</label>
                                  <div class="form-group">
-                                     <asp:TextBox class="form-control" ID="TextBox6" runat="server" placeholder="Password" TextMode="Password" ReadOnly="True"></asp:TextBox>
+                                     <asp:TextBox class="form-control" ID="TextBox6" runat="server" placeholder="Old Password"  ReadOnly="True"></asp:TextBox>
                                  </div>
                             </div>
 
                              <div class="col-md-4">
                                 <label>New Password</label>
                                  <div class="form-group">
-                                     <asp:TextBox class="form-control" ID="TextBox7" runat="server" placeholder="Password" TextMode="Password" ></asp:TextBox>
+                                     <asp:TextBox class="form-control" ID="TextBox7" runat="server" placeholder="New Password" TextMode="Password" ></asp:TextBox>
                                  </div>
                             </div>
                         </div>
@@ -99,8 +105,8 @@
                             <div class="col-8 mx-auto">
                                     <center>
                                 <div class="form-group">
-                                    <a href="usersignup.aspx"> <input class="btn btn-primary btn-block btn-lg" id="Button2" type="button" value="Update" /></a>  
-                                 </div>
+                                    <asp:Button class="btn btn-primary btn-block"  ID="Button1" runat="server" Text="Update" OnClick="Button1_Click" />
+                                </div>
                                      </center>
                             </div>             
                         </div>            
@@ -141,8 +147,18 @@
 
 
                         <div class="row">
+                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ElibraryConnectionString %>" SelectCommand="SELECT * FROM [book_issue_tbl]"></asp:SqlDataSource>
                             <div class="col">
-                                <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server"></asp:GridView>  
+                                <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" OnRowDataBound="GridView1_RowDataBound">
+                                    <Columns>
+                                        <asp:BoundField DataField="member_id" HeaderText="Member ID" SortExpression="member_id" />
+                                        <asp:BoundField DataField="member_name" HeaderText="Member Name" SortExpression="member_name" />
+                                        <asp:BoundField DataField="book_id" HeaderText="Book ID" SortExpression="book_id" />
+                                        <asp:BoundField DataField="book_name" HeaderText="Book Name" SortExpression="book_name" />
+                                        <asp:BoundField DataField="issue_date" HeaderText="Issue Date" SortExpression="issue_date" />
+                                        <asp:BoundField DataField="due_date" HeaderText="Due date" SortExpression="due_date" />
+                                    </Columns>
+                                </asp:GridView>  
                             </div>
                         </div>
                   </div>

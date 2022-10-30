@@ -64,6 +64,11 @@
                                 <label>Email</label>
                                  <div class="form-group">
                                      <asp:TextBox class="form-control" ID="TextBox4" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>
+                                 <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server"
+                                           ControlToValidate="TextBox4"
+                                            ErrorMessage="Enter correct format." ForeColor="Red"
+                                            ValidationExpression="[a-zA-Z0-9]+@gmail.com">
+                                      </asp:RegularExpressionValidator>
                                  </div>
                             </div>
                         </div>
@@ -80,6 +85,9 @@
                                <label>Member ID</label>
                                  <div class="form-group">
                                      <asp:TextBox class="form-control" ID="TextBox5" runat="server" placeholder="User ID" ></asp:TextBox>
+                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" runat="server" 
+                                         ErrorMessage="Please enter your User ID" ControlToValidate="TextBox5">
+                                     </asp:RequiredFieldValidator>
                                  </div>
                             </div>
 
@@ -87,6 +95,9 @@
                                 <label>Password</label>
                                  <div class="form-group">
                                      <asp:TextBox class="form-control" ID="TextBox6" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" runat="server" 
+                                         ErrorMessage="Please enter your password" ControlToValidate="TextBox6">
+                                     </asp:RequiredFieldValidator>
                                  </div>
                             </div>
                         </div>

@@ -72,7 +72,7 @@ namespace E_librarySystem
 
         protected void LinkButton4_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("viewbooks.aspx");
         }
 
         protected void LinkButton1_Click(object sender, EventArgs e)
@@ -113,7 +113,7 @@ namespace E_librarySystem
 
         protected void LinkButton7_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("userprofile.aspx");
         }
 
         protected void LinkButton6_Click(object sender, EventArgs e)
@@ -169,6 +169,11 @@ namespace E_librarySystem
         protected void LinkButton9_Click1(object sender, EventArgs e)
         {
             Response.Redirect("adminmembermanagement.aspx");
+        }
+
+        protected void LinkButton5_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("adminbookinventory.aspx");
         }
     }
 }

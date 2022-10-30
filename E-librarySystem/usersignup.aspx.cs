@@ -14,6 +14,9 @@ namespace E_librarySystem
     public partial class usersignup : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+
+        public object MessageBox { get; private set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -96,5 +99,6 @@ namespace E_librarySystem
 
             }
         }
+       
     }
 }

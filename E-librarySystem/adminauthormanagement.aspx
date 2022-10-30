@@ -90,7 +90,7 @@
 
                          <div class="row">
                             <div class="col">
-                                <hr></hr>
+                                <hr/>
                             </div>
                         </div>
                         <div class="row">
