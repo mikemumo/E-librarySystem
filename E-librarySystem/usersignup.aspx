@@ -19,22 +19,33 @@
                          <div class="row">
                             <div class="col">
                                 <center>
-                                    <h4>Member Login</h4>
+                                    <h4>Member Sign Up</h4>
                                 </center>
                             </div>
                         </div>
 
                          <div class="row">
                             <div class="col">
-                                <hr></hr>
+                                <hr />
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-6">
                                <label>First Name</label>
-                                 <div class="form-group">
+                                 <div class="form-group">                                    
                                      <asp:TextBox class="form-control" ID="TextBox1" runat="server" placeholder="First Name"></asp:TextBox>
+                                 <asp:RegularExpressionValidator
+                                            ID="RegularExpressionValidator3"
+                                            runat="server"
+                                            ErrorMessage="only characters allowed"
+                                            ForeColor="Red"
+                                            ControlToValidate="TextBox1"
+                                            ValidationExpression="^[a-zA-Z]*$" >
+                                 </asp:RegularExpressionValidator>
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ForeColor="Red" runat="server" 
+                                         ErrorMessage="Please enter your First name" ControlToValidate="TextBox1">
+                                   </asp:RequiredFieldValidator>
                                  </div>
                             </div>
 
@@ -42,6 +53,17 @@
                                 <label>Last Name</label>
                                  <div class="form-group">
                                      <asp:TextBox class="form-control" ID="TextBox2" runat="server" placeholder="Last Name" ></asp:TextBox>
+                                 <asp:RegularExpressionValidator
+                                            ID="RegularExpressionValidator4"
+                                            runat="server"
+                                            ErrorMessage="only characters allowed"
+                                            ForeColor="Red"
+                                            ControlToValidate="TextBox2"
+                                            ValidationExpression="^[a-zA-Z]*$" >
+                                 </asp:RegularExpressionValidator>
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ForeColor="Red" runat="server" 
+                                         ErrorMessage="Please enter your Last name" ControlToValidate="TextBox2">
+                                   </asp:RequiredFieldValidator>
                                  </div>
                             </div>
                         </div>
@@ -56,7 +78,9 @@
                                             ErrorMessage="Only numeric allowed." ForeColor="Red"
                                             ValidationExpression="^[0-9]{10}$" ValidationGroup="NumericValidate">
                                       </asp:RegularExpressionValidator>
-                                     
+                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" ForeColor="Red" runat="server" 
+                                         ErrorMessage="Please enter your Phone Number" ControlToValidate="TextBox3">
+                                   </asp:RequiredFieldValidator>
                                  </div>
                             </div>
 
@@ -87,7 +111,7 @@
                                      <asp:TextBox class="form-control" ID="TextBox5" runat="server" placeholder="User ID" ></asp:TextBox>
                                   <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" runat="server" 
                                          ErrorMessage="Please enter your User ID" ControlToValidate="TextBox5">
-                                     </asp:RequiredFieldValidator>
+                                   </asp:RequiredFieldValidator>
                                  </div>
                             </div>
 

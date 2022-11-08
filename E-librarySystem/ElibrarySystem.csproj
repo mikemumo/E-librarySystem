@@ -106,6 +106,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="aboutus.aspx" />
     <Content Include="adminauthormanagement.aspx" />
     <Content Include="adminbookinventory.aspx" />
     <Content Include="adminbookissuing.aspx" />
@@ -227,6 +228,13 @@
     <Content Include="Site1.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="aboutus.aspx.cs">
+      <DependentUpon>aboutus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aboutus.aspx.designer.cs">
+      <DependentUpon>aboutus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="adminauthormanagement.aspx.cs">
       <DependentUpon>adminauthormanagement.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
