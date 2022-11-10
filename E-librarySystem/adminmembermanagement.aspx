@@ -6,6 +6,7 @@
             //$('.table1').DataTable();
         });
     </script>
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceholder1" runat="server">
     <div class="container-fluid">
@@ -108,7 +109,9 @@
 
                   <div class="card">
                     <div class="card-body">
-                        
+                        <div class="col-4-mx-auto">
+                            <asp:Button CssClass="btn btn-primary btn-sm" ID="Button2" runat="server" Text="Print Result" OnClick="Button2_Click" />
+                        </div>
 
                          <div class="row">
                             <div class="col">
@@ -121,7 +124,8 @@
                   </div>
                         <div class="row">
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ElibraryConnectionString %>" SelectCommand="SELECT * FROM [member_master_tbl]"></asp:SqlDataSource>
-                            <div class="col">
+                           
+                            <div class="col" id="DivToPrint" runat="server">                               
                                 <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="member_id" DataSourceID="SqlDataSource1">
                                     <Columns>
                                         <asp:BoundField DataField="member_id" HeaderText="ID" ReadOnly="True" SortExpression="member_id" />
@@ -132,8 +136,10 @@
                                         <asp:BoundField DataField="email" HeaderText="Email" SortExpression="email" />
                                     </Columns>
                                 </asp:GridView>  
-                            </div>
-                        </div>
+                                </div>
+  
+                               </div>
+                      
 
               </div>
              </div>

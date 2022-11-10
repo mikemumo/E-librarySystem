@@ -1,9 +1,14 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -134,6 +139,30 @@ namespace E_librarySystem
             TextBox4.Text = "";
             TextBox2.Text = "";
             TextBox5.Text = "";
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Response.ContentType = "Application/pdf";
+            Response.AddHeader("Content-Disposition", "attachment; filename=UsersReport.pdf");
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter hw = new HtmlTextWriter(sw);
+            DivToPrint.RenderControl(hw);
+            Document doc = new Document(PageSize.A4);
+            HTMLWorker htw = new HTMLWorker(doc);
+            PdfWriter.GetInstance(doc, Response.OutputStream);
+            doc.Open();
+            StringReader sr = new StringReader(sw.ToString());
+            htw.Parse(sr);
+            doc.Close();
+            Response.Write(doc);
+            Response.End();
+
+        }
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+           
         }
     }
 }

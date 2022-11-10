@@ -1,4 +1,7 @@
-﻿using System;
+﻿using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -260,6 +263,11 @@ namespace E_librarySystem
 
             }
         }
+
+       
+
+
+
         bool checkIfBookExists()
         {
             try

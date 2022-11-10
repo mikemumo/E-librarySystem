@@ -7,6 +7,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.IO;
 
 namespace E_librarySystem
 {
@@ -209,6 +213,31 @@ namespace E_librarySystem
         }
 
         protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+
+            Response.ContentType = "Application/pdf";
+            Response.AddHeader("Content-Disposition", "attachment; filename=PublishersReport.pdf");
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter hw = new HtmlTextWriter(sw);
+            DivToPrint.RenderControl(hw);
+            Document doc = new Document(PageSize.A4);
+            HTMLWorker htw = new HTMLWorker(doc);
+            PdfWriter.GetInstance(doc, Response.OutputStream);
+            doc.Open();
+            StringReader sr = new StringReader(sw.ToString());
+            htw.Parse(sr);
+            doc.Close();
+            Response.Write(doc);
+            Response.End();
+
+        }
+        public override void VerifyRenderingInServerForm(Control control)
         {
 
         }

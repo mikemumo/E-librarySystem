@@ -78,7 +78,9 @@
 
                   <div class="card">
                     <div class="card-body">
-                        
+                        <div class="col-4-mx-auto">
+                            <asp:Button CssClass="btn btn-primary btn-sm" ID="Button5" runat="server" Text="Print Result" OnClick="Button5_Click"  />
+                        </div>
 
                          <div class="row">
                             <div class="col">
@@ -95,7 +97,7 @@
                         </div>
                         <div class="row">
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ElibraryConnectionString %>" SelectCommand="SELECT * FROM [publisher_master_tbl]"></asp:SqlDataSource>
-                            <div class="col">
+                            <div class="col" id="DivToPrint" runat="server">
                                 <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="publisher_id" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
                                     <Columns>
                                         <asp:BoundField DataField="publisher_id" HeaderText="publisher_id" ReadOnly="True" SortExpression="publisher_id" />

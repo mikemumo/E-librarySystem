@@ -120,7 +120,7 @@
 
                   <div class="card">
                     <div class="card-body">
-                        
+                        <asp:Button CssClass="btn btn-primary btn-sm" ID="Button5" runat="server" Text="Print Result" OnClick="Button5_Click" />
 
                          <div class="row">
                             <div class="col">
@@ -137,7 +137,7 @@
                         </div>
                         <div class="row">
                             <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString='<%$ ConnectionStrings:ElibraryConnectionString %>' SelectCommand="SELECT * FROM [book_issue_tbl]"></asp:SqlDataSource>
-                            <div class="col">
+                            <div class="col" id="DivToPrint" runat="server">
                                 <asp:GridView class="table table-striped table-bordered" ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="SqlDataSource1" OnRowDataBound="GridView1_RowDataBound">
                                     <Columns>
                                         <asp:BoundField DataField="member_id" HeaderText="Member ID" SortExpression="member_id"></asp:BoundField>

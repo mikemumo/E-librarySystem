@@ -1,10 +1,15 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.html.simpleparser;
+using iTextSharp.text.pdf;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -13,6 +18,8 @@ namespace E_librarySystem
     public partial class adminauthormanagement : System.Web.UI.Page
     {
         string strcon = ConfigurationManager.ConnectionStrings["con"].ConnectionString;
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             GridView1.DataBind();
@@ -212,5 +219,33 @@ namespace E_librarySystem
         {
 
         }
+
+        protected void Button5_Click(object sender, EventArgs e)
+        {
+            Response.ContentType = "Application/pdf";
+            Response.AddHeader("Content-Disposition", "attachment; filename=AuthorsReport.pdf");
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            StringWriter sw = new StringWriter();
+            HtmlTextWriter hw = new HtmlTextWriter(sw);
+            DivToPrint.RenderControl(hw);
+            Document doc = new Document(PageSize.A4);
+            HTMLWorker htw = new HTMLWorker(doc);
+            PdfWriter.GetInstance(doc, Response.OutputStream);
+            doc.Open();
+            StringReader sr = new StringReader(sw.ToString());
+            htw.Parse(sr);
+            doc.Close();
+            Response.Write(doc);
+            Response.End();
+
+        }
+        public override void VerifyRenderingInServerForm(Control control)
+        {
+            
+        }
+        
+
+        
+    
     }
 }
